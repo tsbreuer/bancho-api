@@ -9,18 +9,21 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 public class Beatmap {
 	
-	public static final Beatmap DEFAULT = new Beatmap("", "", "", "", "", 0);
+	public static final Beatmap DEFAULT = new Beatmap("", "", "", "", "", 0,"",false);
 	
 	private String title;
 	private String artist;
 	private String creator;
 	private String version;
 	private String beatmapMD5;
+	private String difficulty;
+	private boolean dtEnabled;
 	private int beatmapId = 0;
 	
-	private String beatmapName;
+	private String beatmapName;	
+	public int RequestedBy;
 	
-	public Beatmap(String beatmapName, String beatmapMD5, int beatmapId) {
+	public Beatmap(String beatmapName, String beatmapMD5, int beatmapId, String rating, boolean dt) {
 		this.artist = "unknown";
 		this.title = "unknown";
 		this.version = "unknown";
@@ -28,15 +31,19 @@ public class Beatmap {
 		this.beatmapName = beatmapName;
 		this.beatmapMD5 = beatmapMD5;
 		this.beatmapId = beatmapId;
+		this.difficulty = rating;
+		this.dtEnabled = dt;
 	}
 	
-	public Beatmap(String artist, String title, String version, String creator, String beatmapMD5, int beatmapId) {
+	public Beatmap(String artist, String title, String version, String creator, String beatmapMD5, int beatmapId, String rating, boolean dt) {
 		this.artist = artist;
 		this.title = title;
 		this.version = version;
 		this.creator = creator;
 		this.beatmapMD5 = beatmapMD5;
 		this.beatmapId = beatmapId;
+		this.difficulty = rating;
+		this.dtEnabled = dt;
 	}
 	
 	public Beatmap(File beatmap) throws IOException {
@@ -85,6 +92,7 @@ public class Beatmap {
 	public int getId() {
 		return beatmapId;
 	}
+	
 
 	public static Beatmap getDefault() {
 		return DEFAULT;
@@ -105,4 +113,13 @@ public class Beatmap {
 	public String getVersion() {
 		return version;
 	}
+
+	public String getDiff() {
+		return difficulty;
+	}
+
+	public boolean getDT() {
+		return dtEnabled;
+	}
+
 }

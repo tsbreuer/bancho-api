@@ -1,6 +1,19 @@
 package lt.ekgame.bancho.api.units;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import org.apache.commons.io.IOUtils;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import lt.ekgame.bancho.api.Bancho;
 import lt.ekgame.bancho.api.packets.ByteDataInputStream;
@@ -31,6 +44,7 @@ public class MultiplayerRoom extends Packet {
 	public byte[] slotStatus = new byte[MAX_SLOTS];
 	public byte[] slotTeam = new byte[MAX_SLOTS];
 	public int[] slotId = new int[MAX_SLOTS];
+	public String[] slotName = new String[MAX_SLOTS];
 	public int[] slotMods = new int[MAX_SLOTS];
 	
 	public MultiplayerRoom() {}
@@ -102,7 +116,7 @@ public class MultiplayerRoom extends Packet {
 		
 		for (int i = 0; i < MAX_SLOTS; i++)
 			if ((slotStatus[i] & 0x7C) > 0) // 0x7C = 0b01111100
-				stream.writeInt(this.slotId[i]);
+		stream.writeInt(this.slotId[i]);
 		
 		stream.writeInt(hostId);
 		stream.writeByte((byte) playmode.id);
@@ -136,10 +150,12 @@ public class MultiplayerRoom extends Packet {
 		for (int i = 0; i < MAX_SLOTS; i++)
 			slotTeam[i] = stream.readByte();
 		
-		for (int i = 0; i < MAX_SLOTS; i++)
-			if ((slotStatus[i] & 0x7C) > 0)
+		for (int i = 0; i < MAX_SLOTS; i++){
+			if ((slotStatus[i] & 0x7C) > 0){
 				slotId[i] = stream.readInt();
-		
+			}
+		}
+				
 		hostId = stream.readInt();
 		playmode = PlayMode.values()[stream.readByte()];
 		scoringType = MatchScoringType.values()[stream.readByte()];
@@ -191,6 +207,6 @@ public class MultiplayerRoom extends Packet {
 	}
 	
 	public Beatmap getBeatmap() {
-		return new Beatmap(beatmapName, beatmapChecksum, beatmapId);
+		return new Beatmap(beatmapName, beatmapChecksum, beatmapId, "",false);
 	}
 }

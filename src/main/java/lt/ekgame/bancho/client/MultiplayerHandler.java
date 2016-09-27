@@ -16,6 +16,7 @@ import lt.ekgame.bancho.api.packets.server.PacketRoomJoined;
 import lt.ekgame.bancho.api.packets.server.PacketRoomUpdate;
 import lt.ekgame.bancho.api.units.Beatmap;
 import lt.ekgame.bancho.api.units.MatchSpecialMode;
+import lt.ekgame.bancho.api.units.Mods;
 import lt.ekgame.bancho.api.units.MultiplayerRoom;
 import lt.ekgame.bancho.api.units.UserStatus;
 
@@ -117,6 +118,7 @@ public class MultiplayerHandler implements PacketHandler {
 		}
 	}
 	
+	
 	public void setBeatmap(Beatmap beatmap) {
 		if (isHost()) {
 			currentRoom.setBeatmap(beatmap == null ? Beatmap.DEFAULT : beatmap);
@@ -156,4 +158,11 @@ public class MultiplayerHandler implements PacketHandler {
 	public MultiplayerRoom getRoom() {
 		return currentRoom;
 	}
+
+    public void setMods(int mods) {
+        if (isHost()) {
+            currentRoom.mods = new Mods(mods);
+            sendRoomUpdate();
+        }
+    }
 }

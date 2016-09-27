@@ -236,6 +236,8 @@ public class BanchoClient extends Thread implements Bancho {
 	public void run() {
 		while (true) {
 			//System.out.println("Update");
+			Packet outgoingMessage = messageRateLimiter.getOutgoingPacket();
+			if (outgoingMessage != null) sendPacket(outgoingMessage);
 			lastRequest = System.currentTimeMillis();
 			if (outgoingPackets.isEmpty())
 				outgoingPackets.add(new PacketIdle());
@@ -293,11 +295,20 @@ public class BanchoClient extends Thread implements Bancho {
 		outgoingPackets.add(packet);
 	}
 	
+	private RateLimiterImpl messageRateLimiter = new RateLimiterImpl(1000);
+	
 	public void sendMessage(String channel, String message) {
-		if (channel.startsWith("#"))
-			sendPacket(new PacketSendMessageChannel(message, channel));
+		
+		if (channel.startsWith("#")) 
+		{
+			messageRateLimiter.sendPacket(new PacketSendMessageChannel(message, channel));
+		} 
 		else
-			sendPacket(new PacketSendMessageUser(message, channel));
+		{
+			messageRateLimiter.sendPacket(new PacketSendMessageUser(message, channel)); 
+		}
+		
+
 	}
 	
 	public void beginSpectating(int userId) {
