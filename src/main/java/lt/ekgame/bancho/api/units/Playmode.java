@@ -1,6 +1,6 @@
 package lt.ekgame.bancho.api.units;
 
-public enum Playmode {
+public enum PlayMode {
 	
 	OSU(0),
 	TAIKO(1),
@@ -9,7 +9,7 @@ public enum Playmode {
 	
 	public int id;
 	
-	Playmode(int id) {
+	PlayMode(int id) {
 		this.id = id;
 	}
 }

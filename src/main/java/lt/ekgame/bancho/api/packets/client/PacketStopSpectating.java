@@ -6,6 +6,9 @@ import lt.ekgame.bancho.api.Bancho;
 import lt.ekgame.bancho.api.packets.ByteDataInputStream;
 import lt.ekgame.bancho.api.packets.ByteDataOutputStream;
 import lt.ekgame.bancho.api.packets.Packet;
+import lt.ekgame.bancho.api.units.Mods;
+import lt.ekgame.bancho.api.units.PlayMode;
+import lt.ekgame.bancho.api.units.UserStatus;
 
 /**
  * Signals to stop spectating.
