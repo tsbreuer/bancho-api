@@ -9,6 +9,7 @@ public enum Packets {
 	PACKET_STATUS_UPDATE    (0x00, PacketStatusUpdate.class),
 	PACKET_DISCONNECT       (0x02, PacketDisconnect.class),
 	PACKET_IDLE             (0x04, PacketIdle.class),
+	PACKET_OSU_SLOT_LOCK    (0x28, PacketSlotLock.class),
 	PACKET_START_SPECTATING (0x10, PacketStartSpectating.class),
 	PACKET_STOP_SPECTATING  (0x11, PacketStopSpectating.class),
 	PACKET_SEND_CHAT_CHANNEL(0x01, PacketSendMessageChannel.class),
