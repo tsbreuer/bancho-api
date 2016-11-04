@@ -14,7 +14,7 @@ public class Beatmap {
     private String creator;
     private String version;
     private String beatmapMD5;
-    private String difficulty;
+    public String difficulty;
     private boolean dtEnabled;
     private int beatmapId = 0;
     private String beatmapName;

@@ -24,7 +24,11 @@ public enum Packets {
 	PACKET_LEAVE_CHANNEL    (0x4e, PacketLeaveChannel.class),
 	PACKET_REQUEST_USERS    (0x55, PacketRequestUserInfo.class),
 	PACKET_UNKNOWN_61       (0x61, PacketUnknown61.class),
-	
+	PACKET_MATCH_JOIN       (0x61, PacketMatchJoin.class),
+	PACKET_MATCH_JOIN_FAILED (0x39, PacketMatchPlayerFailed.class),
+	PACKET_MATCH_JOIN_SUCCESS (0x24, PacketMatchJoinSuccess.class),
+	PACKET_MATCH_PLAYER_FAILED(0x25, PacketMatchJoinFailure.class),
+	PACKET_GAME_PLAYER_SKIPPED (0x51, PacketGamePlayerSkipped.class),
 	PACKET_READY            (0x27, PacketRoomReady.class),
 	PACKET_START_GAME       (0x2c, PacketRoomStartGame.class),
 	PACKET_FINISHED_MAP     (0x31, PacketRoomFinishMap.class),
