@@ -191,6 +191,6 @@ public class MultiplayerRoom extends Packet {
 	}
 	
 	public Beatmap getBeatmap() {
-        return new Beatmap(this.beatmapName, this.beatmapChecksum, this.beatmapId, "", false);
+        return new Beatmap(this.beatmapName, this.beatmapChecksum, this.beatmapId, "", false,false);
 	}
 }

@@ -23,7 +23,6 @@ public enum Packets {
 	PACKET_UNKNOWN_44       (0x44, PacketUnknown44.class),
 	PACKET_LEAVE_CHANNEL    (0x4e, PacketLeaveChannel.class),
 	PACKET_REQUEST_USERS    (0x55, PacketRequestUserInfo.class),
-	PACKET_UNKNOWN_61       (0x61, PacketUnknown61.class),
 	PACKET_MATCH_JOIN       (0x61, PacketMatchJoin.class),
 	PACKET_MATCH_JOIN_FAILED (0x39, PacketMatchPlayerFailed.class),
 //	PACKET_MATCH_JOIN_SUCCESS (0x24, PacketMatchJoinSuccess.class),
@@ -58,7 +57,7 @@ public enum Packets {
 	PACKET_TIME_SYNC        (0x5c, PacketTimeSync.class),
 	PACKET_CLEAR_USER_CHAT  (0x5e, PacketClearUserChat.class),
 	PACKET_UNKNOWN_5F       (0x5f, PacketUnknown5F.class),
-	PACKET_UNKNOWN_60       (0x60, PacketUnknown60.class),
+	PACKET_BANCHO_USERPRESENCEBUNDLE (0x60, PacketBanchoUserPresenceBundle.class),
 	
 	PACKET_SCORE_UPDATE     (0x30, PacketRoomScoreUpdate.class),
 	PACKET_EVERYONE_LOADED  (0x35, PacketRoomEveryoneLoaded.class),

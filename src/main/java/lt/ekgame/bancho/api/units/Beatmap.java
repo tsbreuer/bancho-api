@@ -8,7 +8,7 @@ import java.util.Scanner;
 import org.apache.commons.codec.digest.DigestUtils;
 
 public class Beatmap {
-    public static final Beatmap DEFAULT = new Beatmap("", "", "", "", "", 0, "", false);
+    public static final Beatmap DEFAULT = new Beatmap("", "", "", "", "", 0, "", false,false);
     private String title;
     private String artist;
     private String creator;
@@ -16,11 +16,12 @@ public class Beatmap {
     private String beatmapMD5;
     public String difficulty;
     private boolean dtEnabled;
+    private boolean htEnabled;
     private int beatmapId = 0;
     private String beatmapName;
     public int RequestedBy;
 
-    public Beatmap(String beatmapName, String beatmapMD5, int beatmapId, String rating, boolean dt) {
+    public Beatmap(String beatmapName, String beatmapMD5, int beatmapId, String rating, boolean dt,boolean ht) {
         this.artist = "unknown";
         this.title = "unknown";
         this.version = "unknown";
@@ -30,9 +31,10 @@ public class Beatmap {
         this.beatmapId = beatmapId;
         this.difficulty = rating;
         this.dtEnabled = dt;
+        this.htEnabled = ht;
     }
 
-    public Beatmap(String artist, String title, String version, String creator, String beatmapMD5, int beatmapId, String rating, boolean dt) {
+    public Beatmap(String artist, String title, String version, String creator, String beatmapMD5, int beatmapId, String rating, boolean dt,boolean ht) {
         this.artist = artist;
         this.title = title;
         this.version = version;
@@ -41,6 +43,7 @@ public class Beatmap {
         this.beatmapId = beatmapId;
         this.difficulty = rating;
         this.dtEnabled = dt;
+        this.htEnabled = ht;
     }
 public Beatmap(File beatmap) throws IOException {
 		
@@ -115,4 +118,8 @@ public Beatmap(File beatmap) throws IOException {
     public boolean getDT() {
         return this.dtEnabled;
     }
+
+	public boolean getHT() {
+		return this.htEnabled;
+	}
 }
